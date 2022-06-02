@@ -8,6 +8,9 @@ if __name__ == '__main__':
 
     with open(os.path.join(__location__, 'dataset.txt'), 'r') as f:
         
-        for line in f:
-            functions.readLine(line, 20)
-    
+        lines = f.read().splitlines()
+
+        for i in range(len(lines)):
+            functions.readLine(lines[i], i)
+        # for line in f:
+        #     functions.readLine(line)
