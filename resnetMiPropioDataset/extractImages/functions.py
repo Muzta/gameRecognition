@@ -10,9 +10,9 @@ def imagesGathering(videoLink: str, game: str, lsOfImages: list([int]), delay: i
     # in the game folder, with a delay according the desired number of images
     vidcap = cv2.VideoCapture(videoLink) 
 
-    fps = int(vidcap.get(cv2.CAP_PROP_FPS))
-    dl = delay * fps
-    st = startTime * fps
+    fps = vidcap.get(cv2.CAP_PROP_FPS)
+    dl = int(delay * fps)
+    st = int(startTime * fps)
     delay = [st + (item * dl) for item in lsOfImages] 
 
     i = 0
@@ -59,9 +59,11 @@ def timeToSeconds(time: str):
     time.reverse()
 
     seconds = int(''.join(time[0].split()))
+
     if len(time) > 1:
         minutes = int(''.join(time[1].split()))
         seconds = seconds+minutes*60
+
     if len(time) > 2:
         hours = int(''.join(time[2].split()))
         seconds = seconds+ 3600*hours
