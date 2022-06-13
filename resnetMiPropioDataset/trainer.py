@@ -12,8 +12,8 @@ from networks.utils.stoppingValidations import EarlyStoppingByLoss
 
 BATCH = 32
 EPOCHS = 100
-ACCURACY = 0.88
-LOSS = 0.4
+ACCURACY = 1
+LOSS = 0
 
 
 ap = argparse.ArgumentParser()
@@ -68,7 +68,7 @@ testingGenerator = testImgDataGen.flow_from_directory(os.path.join(tempPath,'tes
 print(trainingGenerator.class_indices)
 print("[INFO] compiling model...") 
 opt = adam_v2.Adam()
-model = ResNet50.build(numChannels=3, imgRows=224, imgCols=224, numClasses=len(trainingGenerator.class_indices))
+model = ResNet101.build(numChannels=3, imgRows=224, imgCols=224, numClasses=len(trainingGenerator.class_indices))
 model.summary()
 
 model.compile(loss="categorical_crossentropy", optimizer=opt,

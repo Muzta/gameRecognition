@@ -4,6 +4,8 @@ import keras.preprocessing.image as kerasImage
 import argparse
 from os import path
 
+import numpy
+
 # gpus = tf.config.experimental.list_physical_devices('GPU')
 # if gpus:
 #     try:
@@ -60,6 +62,7 @@ print("[INFO] loading prediction...")
 preds = model.predict(image)
 labels = preds.argmax(axis=-1)
 
+labelNames = numpy.array(['Deathloop','It takes two','Metroid Dread','Psychonauts 2','Ratchet and Clank: Rift aparts','Resident Evil Village'])
 
 # find the class label index with the largest corresponding
 # probability
@@ -68,7 +71,7 @@ print('Prediction:')
 i = 0
 print(labels)
 for label in labels:
-	print(label)
+	print(labelNames[label])
 	print(preds[i][label]*100)
 	i = i+1
 
