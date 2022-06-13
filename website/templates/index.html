@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href='/static/main.css' />
+
+ 
+    </head>
+    <body>
+        <h1>Predicción de juegos</h1>
+        <p>Sube una imagen de tu juego y el sistema lo predecirá. 
+            <br>Disponibles: 
+                <em>Deathloop; It takes two; Metroid Dread; Psychonauts 2; Ratchet and Clank: Rift aparts;
+                    Resident Evil Village</em>
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label for="myfile">Selecciona una imagen:</label>
+            <input type="file" id="myfile" name="predict_image" accept="image/*"><br><br>
+            <input type="submit" value="Predecir"/>
+        </form>
+
+        {% if game != "" %}
+        <p> 
+            {% if img_data != "" %}
+            <div>
+                <img src="data:image/jpeg;base64,{{ img_data }}">
+            </div>
+            {% endif %}            
+        <br><b>Juego predecido</b>: {{game}}
+        <br><b>Probabilidad de acierto</b>: {{score}}</p>
+        {% endif %}
+
+    </body>
+</html>
