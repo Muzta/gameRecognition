@@ -4,11 +4,13 @@ import numpy as np
 import cv2
 from PIL import Image
 from tensorflow.keras.models import load_model
-from flask import Flask, render_template, request
+from flask import Flask, abort, render_template, request
 import tensorflow as tf
 from base64 import b64encode
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png']
 
 gpus = tf.config.experimental.list_physical_devices('GPU')
 if gpus:
@@ -34,13 +36,20 @@ def index():
     if request.method == 'POST':
         # Read the uploaded image and make it workable 
         submited_image = request.files['predict_image']
+        filename = secure_filename(submited_image.filename)
+        # Check the file is an image
+        if filename != '':
+            file_ext = os.path.splitext(filename)[1]
+            if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+                abort(400)
+
         submited_npimg = np.fromstring(submited_image.read(), np.uint8)
         predict_image = cv2.imdecode(submited_npimg, cv2.IMREAD_COLOR)
 
         # Convert cv2 image to PIL image (cv2 work with brg model, PIL with rgb model)
         pil_img = cv2.cvtColor(predict_image, cv2.COLOR_BGR2RGB)
         pil_img = Image.fromarray(pil_img)
-        
+
         predicted = image_prediction(predict_image)
         game = predicted[0]
         score = predicted[1]

@@ -13,7 +13,7 @@
                     Resident Evil Village</em>
         </p>
 
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" onsubmit="return validateImageFile()">
             <label for="myfile">Selecciona una imagen:</label>
             <input type="file" id="myfile" name="predict_image" accept="image/*"><br><br>
             <input type="submit" value="Predecir"/>
@@ -31,4 +31,15 @@
         {% endif %}
 
     </body>
+
+    <script>
+    function validateImageFile() {
+        let fileName = document.querySelector('#myfile').value;
+        let extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+        if (extension != "png" && extension != "jpg") {
+          alert("Se debe seleccionar una imagen");
+          return false;
+        }
+      }
+    </script>
 </html>
