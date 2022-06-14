@@ -3,28 +3,29 @@ import os
 import numpy as np
 import cv2
 from PIL import Image
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 from flask import Flask, abort, render_template, request
-import tensorflow as tf
+# import tensorflow as tf
+# from tensorflow.config import experimental
 from base64 import b64encode
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png']
 
-gpus = tf.config.experimental.list_physical_devices('GPU')
-if gpus:
-    try:
-        # Currently, memory growth needs to be the same across GPUs
-        for gpu in gpus:
-            tf.config.experimental.set_memory_growth(gpu, True)
-        logical_gpus = tf.config.experimental.list_logical_devices('GPU')
-        print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
-    except RuntimeError as e:
-        # Memory growth must be set before GPUs have been initialized
-        print(e)
+# gpus = experimental.list_physical_devices('GPU')
+# if gpus:
+#     try:
+#         # Currently, memory growth needs to be the same across GPUs
+#         for gpu in gpus:
+#             experimental.set_memory_growth(gpu, True)
+#         logical_gpus = experimental.list_logical_devices('GPU')
+#         print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+#     except RuntimeError as e:
+#         # Memory growth must be set before GPUs have been initialized
+#         print(e)
 
-model = os.path.join(os.getcwd(),'resnetMiPropioDataset','networks','output','resnet50model88.hdf5')
+model = os.path.join(os.getcwd(),'website','models','resnet50model88.hdf5')
 model = load_model(model)
 
 @app.route('/', methods=['GET', 'POST'])
