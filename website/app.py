@@ -25,7 +25,9 @@ app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png']
 #         # Memory growth must be set before GPUs have been initialized
 #         print(e)
 
-model = os.path.join(os.getcwd(),'website','models','resnet50model88.hdf5')
+path = os.path.dirname(os.path.realpath(__file__))  # This file path
+path = os.path.abspath(os.path.join(path, os.pardir))   # Parent path
+model = os.path.join(path,'website','models','resnet50model88.hdf5')
 model = load_model(model)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -82,4 +84,6 @@ def image_prediction(predict_image):
 
     return game_prediction_name, model_score
 
-app.run()
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
