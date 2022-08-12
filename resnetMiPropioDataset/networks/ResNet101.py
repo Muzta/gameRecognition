@@ -51,7 +51,7 @@ class ResNet101:
 				x = resnetBlock(x, 128, 3, activation, 2)
 			else:
 				x = resnetBlock(x, 128, 3, activation, 1)
-		for i in range(6):
+		for i in range(23):
 			if i == 0:
 				x = resnetBlock(x, 256, 3, activation, 2)
 			else:
