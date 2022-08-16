@@ -16,13 +16,13 @@
         <form method="POST" enctype="multipart/form-data" onsubmit="return validateImageFile()">
             <label for="myfile">Selecciona una imagen:</label>
             <input type="file" id="myfile" name="predict_image" accept="image/*"><br><br>
-            <input type="submit" value="Predecir"/>
+            <input type="submit" id="inputPredict" value="Predecir"/>
         </form>
 
         {% if game != "" %}
-        <p> 
+        <p id="predictedGameData"> 
             {% if img_data != "" %}
-            <div>
+            <div id="gameImage">
                 <img src="data:image/jpeg;base64,{{ img_data }}">
             </div>
             {% endif %}            

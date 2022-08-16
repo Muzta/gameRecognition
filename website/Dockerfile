@@ -1,6 +1,8 @@
 FROM python:3.8-slim
 
-RUN pip install --upgrade pip setuptools wheel
+RUN pip install --upgrade pip setuptools wheel 
+RUN apt-get update
+RUN apt-get install ffmpeg libsm6 libxext6  -y
 
 # Copy the requirements into the image
 COPY ./requirements.txt /app/requirements.txt
