@@ -5,6 +5,7 @@ from keras.optimizers import adam_v2
 from keras.preprocessing.image import ImageDataGenerator
 from networks.ResNet101 import ResNet101
 from networks.ResNet50 import ResNet50
+from networks.ResNet34 import ResNet34
 from tempfile import mkdtemp
 import matplotlib.pyplot as plt
 from networks.utils.stoppingValidations import EarlyStoppingByAccuracy
@@ -19,7 +20,7 @@ LOSS = 0
 ap = argparse.ArgumentParser()
 ap.add_argument("-m", "--model", required=True,
 	help="path to output trained model")
-ap.add_argument("-d", "--dataset", required=False,
+ap.add_argument("-d", "--dataset", required=True,
 	help="path to input dataset of images")
 args = vars(ap.parse_args())
 

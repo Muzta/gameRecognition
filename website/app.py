@@ -26,7 +26,7 @@ app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png']
 #         print(e)
 
 path = os.path.dirname(os.path.realpath(__file__))  # This file path
-model = os.path.join(path,'models','resnet50model88.hdf5')
+model = os.path.join(path,'models','resnet101model93.hdf5')
 model = load_model(model)
 
 @app.route('/', methods=['GET', 'POST'])
