@@ -99,4 +99,34 @@ labelNames = numpy.array(['Deathloop', 'It takes two', ...
 This method gives details for each image in de dataset, so it´s recommended using a small and controlled dataset.
 
 
+Website deployment
+==================
 
+You can deploy locally your app with [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+
+```bash
+cd website
+flask run
+```
+
+The deployment can be made with [Docker](https://docs.docker.com/get-docker/) too.
+
+When it's installed, you can run the app with the command:
+
+```bash
+cd website
+docker run --rm -p 5000:5000 muzta/game-recognition
+```
+
+To use your own model, put it in the folder website/model. 
+Then, change the name in the source code of the file website/app.py at line 30:
+
+```python
+model = os.path.join(path,'website','models',"yourModel")
+```
+
+Also, you must change the class names at line 79:
+
+```python
+    labelNames = np.array(['Deathloop', 'It takes two', ...
+```
