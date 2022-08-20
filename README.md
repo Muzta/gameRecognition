@@ -45,7 +45,7 @@ Run the file trainer.py:
 python trainer.py [-m --model] [-d --dataset]
 
 
-required options
+required arguments:
 
 -m --model      Path and name where the model will be stored.
 -d --dataset    Path of the dataset. Must be a file system with the structure: datasetName->className->[Images].
@@ -69,5 +69,34 @@ Also, you can change your network at line 72:
 model = ResNet101.build(numChannels=3, imgRows=224, ...
 
 ```
+
+Test the model
+--------------
+
+To check the preformance of your model, you can run the modelTest.py file:
+
+```bash
+python modelTest.py [-m --model] [-d --dataset] [-w --width] [--e --height]
+
+
+required arguments:
+
+-m --model      Path of the model to check
+-d --dataset    Name of the dataset in the folder datasets
+
+optionals arguments:
+
+-w --width      Widh of the model intput images (default = 224)
+--e --height    Height of the model intput images (default = 224)
+```
+
+Before running it, you must modify the array 'labelNames' in the source code and set the classes of your model. You can find it at line 65:
+
+```python
+labelNames = numpy.array(['Deathloop', 'It takes two', ...
+```
+
+This method gives details for each image in de dataset, so it´s recommended using a small and controlled dataset.
+
 
 
