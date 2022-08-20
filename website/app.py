@@ -3,7 +3,7 @@ import os
 import numpy as np
 import cv2
 from PIL import Image
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 from flask import Flask, abort, render_template, request
 # import tensorflow as tf
 # from tensorflow.config import experimental
@@ -26,8 +26,7 @@ app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png']
 #         print(e)
 
 path = os.path.dirname(os.path.realpath(__file__))  # This file path
-path = os.path.abspath(os.path.join(path, os.pardir))   # Parent path
-model = os.path.join(path,'website','models','resnet50model88.hdf5')
+model = os.path.join(path,'models','resnet50model88.hdf5')
 model = load_model(model)
 
 @app.route('/', methods=['GET', 'POST'])
