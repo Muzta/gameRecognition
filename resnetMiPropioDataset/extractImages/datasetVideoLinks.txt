@@ -1,6 +1,10 @@
-Deathloop,https://www.youtube.com/watch?v=G7lO31uKAn4,21:50,32:03
-It takes two,https://www.youtube.com/watch?v=r1Q7n9XD50A,8:28,37:26
-Metroid Dread,https://www.youtube.com/watch?v=TWg6LP6aFC8,14:05,29:00
-Psychonauts 2,https://www.youtube.com/watch?v=UXsJnGJatNs,10:59,38:40
-Ratchet and Clank: Rift aparts,https://www.youtube.com/watch?v=beaH_CCw-vA,5:26,28:19
-Resident Evil Village,https://www.youtube.com/watch?v=StOVDTdWlEQ,22:22
+------------------------- Borrar, formato ----------------------------------
+'Nombre del juego', 'Enlace del video', '(Opcional) Momento del video en que
+quiere empezar la extraccionn, en formato HH:MM:(SS)', '(Opcional) Momento
+del video en que quiere finalizar la extraccion, en formato HH:MM:(SS)'
+
+Ejemplo
+Juego1, https://www.youtube.com/watch?v=..., 00:00, 15:00
+Juego2, https://www.youtube.com/watch?v=..., 15:00, 30:00
+
+----------------------------------------------------------------------------
