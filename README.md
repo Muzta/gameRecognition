@@ -1,3 +1,9 @@
+Game Recognition
+================
+This is a project of image classification, which you can train your own model using ResNets (Residual Networks) or deploy our simple web application.
+We classified gampley shots of different videogames, so you can use our scrapping code too.
+ <img src="./media/predict.gif"/>
+
 ResNet Training
 ===============
 The following instructions must be made in the folder resnetMiPropioDataset:
