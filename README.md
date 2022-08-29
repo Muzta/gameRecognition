@@ -124,7 +124,8 @@ cd website
 docker run --rm -p 5000:5000 muzta/game-recognition
 ```
 
-To use your own model, put it in the folder website/model. We provide our trained models [here](https://docs.docker.com/get-docker/)
+To use your own model, put it in the folder website/model. 
+We provide our trained models [here](https://drive.google.com/drive/folders/16kIE-mh8yNTamJpS9c0VXG2j9Q6iU3c8?usp=sharing).
 Then, change the name in the source code of the file website/app.py at line 30:
 
 ```python
